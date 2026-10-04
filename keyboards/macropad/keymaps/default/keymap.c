@@ -30,16 +30,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
-// QMK calls this after matrix scans. Start holding F20 after 190 ms, once per press.
+// QMK calls this after matrix scans. Hold Shift+F20 after 190 ms, once per press.
 void matrix_scan_user(void) {
     if (f20_pressed && !f20_holding && timer_elapsed(f20_timer) >= F20_HOLD_TERM) {
         f20_holding = true;
-        register_code(KC_F20);
+        register_code16(S(KC_F20));
     }
 }
 
 // QMK calls this for key presses/releases. Pass other keys through unchanged;
-// consume F20 events to send Ctrl+F20 on a short tap or plain F20 on a hold.
+// consume F20 events to send Ctrl+F20 on a short tap or Shift+F20 on a hold.
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (keycode != KC_F20) {
         return true;
@@ -54,7 +54,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         matrix_scan_user();
         f20_pressed = false;
         if (f20_holding) {
-            unregister_code(KC_F20);
+            unregister_code16(S(KC_F20));
             f20_holding = false;
         } else {
             tap_code16(C(KC_F20));
@@ -64,18 +64,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 
-// Run once after initialization: enable debugging, set full-brightness purple
-// without saving it to EEPROM, and initialize the relay output on pin 11.
+// Run once after initialization: power the LEDs before enabling full-brightness
+// purple, without saving the lighting settings to EEPROM.
 void keyboard_post_init_user(void) {
 debug_enable=true;
     debug_matrix=true;
 
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
-    rgblight_sethsv_noeeprom(200, 255, 255);
-
-    last_led_state = rgblight_get_val() > 0 ? RELAY_ON : RELAY_OFF;
+    last_led_state = RELAY_ON;
     gpio_set_pin_output(RELAY_PIN);
     gpio_write_pin(RELAY_PIN, last_led_state);
+    // Allow the relay and LED supply to settle before transmitting color data.
+    wait_ms(20);
+
+    rgblight_enable_noeeprom();
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+    rgblight_sethsv_noeeprom(200, 255, 255);
 }
 
 // QMK calls this regularly. Update the relay only when RGB brightness crosses zero.

@@ -30,16 +30,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
-// QMK calls this after matrix scans. Start holding F20 after 190 ms, once per press.
+// QMK calls this after matrix scans. Hold Shift+F20 after 190 ms, once per press.
 void matrix_scan_user(void) {
     if (f20_pressed && !f20_holding && timer_elapsed(f20_timer) >= F20_HOLD_TERM) {
         f20_holding = true;
-        register_code(KC_F20);
+        register_code16(S(KC_F20));
     }
 }
 
 // QMK calls this for key presses/releases. Pass other keys through unchanged;
-// consume F20 events to send Ctrl+F20 on a short tap or plain F20 on a hold.
+// consume F20 events to send Ctrl+F20 on a short tap or Shift+F20 on a hold.
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (keycode != KC_F20) {
         return true;
@@ -54,7 +54,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         matrix_scan_user();
         f20_pressed = false;
         if (f20_holding) {
-            unregister_code(KC_F20);
+            unregister_code16(S(KC_F20));
             f20_holding = false;
         } else {
             tap_code16(C(KC_F20));
