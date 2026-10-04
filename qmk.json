@@ -1,0 +1,41 @@
+{
+    "userspace_version": "1.1",
+    "build_targets": [
+        [
+            "cosmos/macropad",
+            "default",
+            {
+                "MAKECMDGOALS": "uf2-split-left",
+                "VIK_BUILD_LEFT": "yes",
+                "TARGET": "macropad_default_left"
+            }
+        ],
+        [
+            "cosmos/macropad",
+            "default",
+            {
+                "MAKECMDGOALS": "uf2-split-right",
+                "VIK_BUILD_RIGHT": "yes",
+                "TARGET": "macropad_default_right"
+            }
+        ],
+        [
+            "cosmos/macropad",
+            "via",
+            {
+                "MAKECMDGOALS": "uf2-split-left",
+                "VIK_BUILD_LEFT": "yes",
+                "TARGET": "macropad_via_left"
+            }
+        ],
+        [
+            "cosmos/macropad",
+            "via",
+            {
+                "MAKECMDGOALS": "uf2-split-right",
+                "VIK_BUILD_RIGHT": "yes",
+                "TARGET": "macropad_via_right"
+            }
+        ]
+    ]
+}

@@ -1,0 +1,170 @@
+{
+    "keyboard_name": "macropad",
+    "manufacturer": "Cosmos",
+    "url": "ryanis.cool/cosmos",
+    "maintainer": "Cosmos",
+    "usb": {
+        "vid": "0x0001",
+        "pid": "0x0001",
+        "device_version": "0.0.1"
+    },
+    "processor": "RP2040",
+    "bootloader": "rp2040",
+    "features": {
+        "bootmagic": true,
+        "rgblight": true,
+        "console": true,
+        "encoder": false,
+        "encoder_map": false,
+        "extrakey": false,
+        "oled": true
+    },
+    "matrix_pins": {
+        "cols": [
+            "GP25",
+            "GP24",
+            "GP23",
+            "GP22",
+            "GP21",
+            "GP20",
+            "GP10"
+        ],
+        "rows": [
+            "GP3",
+            "GP4",
+            "GP5",
+            "GP6",
+            "GP7",
+            "GP8",
+            "GP9"
+        ]
+    },
+    "diode_direction": "ROW2COL",
+    "ws2812": {
+        "pin": "GP2",
+        "driver": "vendor"
+    },
+    "rgblight": {
+        "driver": "ws2812",
+        "animations": {
+            "rainbow_mood": true
+        },
+        "default": {
+            "animation": "rainbow_mood",
+            "val": 50
+        },
+        "led_count": 98,
+        "split": true,
+        "split_count": [
+            49,
+            49
+        ]
+    },
+    "bootmagic": {
+        "matrix": [
+            0,
+            0
+        ]
+    },
+    "split": {
+        "enabled": true,
+        "bootmagic": {
+            "matrix": [
+                7,
+                0
+            ]
+        },
+        "serial": {
+            "driver": "vendor"
+        },
+        "transport": {
+            "watchdog": true
+        }
+    },
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                {
+                    "matrix": [
+                        3,
+                        0
+                    ],
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "matrix": [
+                        3,
+                        1
+                    ],
+                    "x": 38.19999999999998,
+                    "y": 0
+                },
+                {
+                    "matrix": [
+                        2,
+                        0
+                    ],
+                    "x": 0,
+                    "y": 20.5
+                },
+                {
+                    "matrix": [
+                        2,
+                        1
+                    ],
+                    "x": 38.19999999999998,
+                    "y": 20.5
+                },
+                {
+                    "matrix": [
+                        1,
+                        2
+                    ],
+                    "x": 67.35,
+                    "y": 41.2
+                },
+                {
+                    "matrix": [
+                        1,
+                        0
+                    ],
+                    "x": 0,
+                    "y": 41
+                },
+                {
+                    "matrix": [
+                        1,
+                        1
+                    ],
+                    "x": 38.19999999999998,
+                    "y": 41
+                },
+                {
+                    "matrix": [
+                        0,
+                        2
+                    ],
+                    "x": 67.2,
+                    "y": 61.5
+                },
+                {
+                    "matrix": [
+                        0,
+                        0
+                    ],
+                    "x": 0,
+                    "y": 61.5
+                },
+                {
+                    "matrix": [
+                        0,
+                        1
+                    ],
+                    "x": 38.19999999999998,
+                    "y": 61.5
+                }
+            ]
+        }
+    }
+}
