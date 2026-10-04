@@ -36,6 +36,6 @@
 #define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_STATIC_LIGHT
 #define RGBLIGHT_DEFAULT_HUE 200
 #define RGBLIGHT_DEFAULT_SAT 255
-#define RGBLIGHT_DEFAULT_VAL 15
+#define RGBLIGHT_DEFAULT_VAL 255
 
 #include "keyboards/cosmos/macropad/vik/config.vik.post.h"

@@ -18,7 +18,7 @@ debug_enable=true;
     debug_matrix=true;
 
     rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
-    rgblight_sethsv_noeeprom(200, 255, 10);
+    rgblight_sethsv_noeeprom(200, 255, 255);
 
     last_led_state = rgblight_get_val() > 0 ? RELAY_ON : RELAY_OFF;
     gpio_set_pin_output(RELAY_PIN);
