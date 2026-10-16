@@ -14,10 +14,18 @@
         "bootmagic": true,
         "rgblight": true,
         "console": true,
-        "encoder": false,
+        "encoder": true,
         "encoder_map": false,
-        "extrakey": false,
-        "oled": true
+        "extrakey": true,
+        "oled": false
+    },
+    "encoder": {
+        "rotary": [
+            {
+                "pin_a": "GP28",
+                "pin_b": "GP29"
+            }
+        ]
     },
     "matrix_pins": {
         "cols": [

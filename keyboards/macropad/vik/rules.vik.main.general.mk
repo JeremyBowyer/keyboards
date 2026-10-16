@@ -110,3 +110,9 @@ ifeq ($(strip $(VIK_EC11_EVQWGD001)), yes)
 	ENCODER_ENABLE := yes
 	OPT_DEFS += -DVIK_EC11_EVQWGD001
 endif
+
+ifeq ($(strip $(VIK_VISTA508)), yes)
+	SPI_DRIVER_REQUIRED = yes
+	SRC += $(KEYBOARD_PATH_1)/vista508.c
+	OPT_DEFS += -DVIK_VISTA508
+endif
